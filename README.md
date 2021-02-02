@@ -17,7 +17,7 @@ const Import = require('poop.js')
 // project directory
 const module = new Import("import/url", "the/folder/created")
 
-const moduleName = require(module.file())
+// const moduleName = require(module.file())
 
 // hello() => function in the file
 // call the functions
