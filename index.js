@@ -1,3 +1,5 @@
+
+// the package installer
 const Install = require('./install/install.js')
 
 // the module index
