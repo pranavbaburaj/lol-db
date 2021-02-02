@@ -1,6 +1,11 @@
 
 // the package installer
 const Install = require('./install/install.js')
+const {
+	basename,
+	dirname,
+	join
+} = require('path')
 
 // the module index
 var moduleRegistry = {}
@@ -42,7 +47,12 @@ class Import {
 
 	file(){
 		const i = this.installPackage()
-		return `./${i}`
+		const requirePath = `./${dirname(i)}/${basename(i)}`
+
+		// console.log(basename(i))
+		// console.log(requirePath)
+
+		return requirePath
 	}
 
 

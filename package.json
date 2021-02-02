@@ -1,18 +1,29 @@
 {
-  "name": "poop",
+  "name": "poop.js",
   "version": "1.0.0",
-  "description": "A simple online module downloader",
+  "description": "An module management extension",
+  "keywords": [
+    "install",
+    "import",
+    "require"
+  ],
+  "homepage": "https://github.com/pranavbaburaj/poop.js",
+  "bugs": {
+    "url": "https://github.com/pranavbaburaj/poop.js/issues",
+    "email": "code-roller@googlegroups.com"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "poop",
-    "install",
-    "online",
-    "require",
-    "module"
-  ],
-  "author": "pranav baburaj",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pranavbaburaj/poop.js.git"
+  },
+  "author": "P Pranav Baburaj <code-roller@googlegroups.com> (https://github.com/pranavbaburaj)",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "engineStrict": true
 }

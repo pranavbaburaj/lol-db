@@ -1,8 +1,13 @@
 const Import = require('../index.js')
+const hello = require('./mod/testfile.js')
 
 const f = new Import(
-    "https://raw.githubusercontent.com/pranavbaburaj/poop/main/project/prompt.js",
+    "https://raw.githubusercontent.com/pranavbaburaj/poop.js/master/testfiles/testfile.js",
     "mod"
 )
 
-const data = require(f.file())
+
+var d = require(f.file())
+
+
+console.log(hello())
