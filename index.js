@@ -18,7 +18,7 @@ class Import {
 		// look
 		// for packages when the call import
 		this.addModule()
-		this.installPackage()
+		// this.installPackage()
 	}
 
 	/**
@@ -37,7 +37,12 @@ class Import {
 	}
 
 	installPackage(){
-		Install(this.moduleUrl, this.moduleFolder)
+		return Install(this.moduleUrl, this.moduleFolder)
+	}
+
+	file(){
+		const i = this.installPackage()
+		return `./${i}`
 	}
 
 

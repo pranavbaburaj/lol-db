@@ -54,6 +54,8 @@ const install = function(package, folder){
     const request = http.get(package, function(response) {
         response.pipe(file);
     });
+
+    return path
 }
 
 module.exports = install
