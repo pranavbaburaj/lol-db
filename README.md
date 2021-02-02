@@ -1,6 +1,8 @@
 # Poop.js
 A simple javascript libraries for connecting to modules on the internet
 
+`npm install poop.js`
+
 ## How to use it?
 After installing poop.js create a node js project
 `npm init` or `npm init -y`
