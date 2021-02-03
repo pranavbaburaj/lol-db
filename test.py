@@ -11,14 +11,16 @@ f.add(6)
 
 f.add(64)
 
-f.add(644)
+f.add(6)
 
 f.add(64)
+f.add(8)
+f.add(7)
 
-print(f.all())
+# print(f.element_at(0))
+
+# print(f.find
+print(f.choice())
 
 
-f.remove(2)
-
-print(f.all())
 
