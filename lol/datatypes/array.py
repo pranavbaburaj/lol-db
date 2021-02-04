@@ -218,6 +218,27 @@ class LOLArray():
         else:
             raise Exception("Range should be max or min")
 
+    def empty(self):
+        return len(self.__array_members) == 0
+
+    # extend the array size
+    def extend(self, new_size):
+        # if the length is not specified
+        # or the length == NOne
+        # check if the new_size is
+        # greater than the old size
+        # if yes asign the new value
+        # to self.lengthog
+        # else, throw an error
+        if self.lengthof is not None:
+            if new_size > self.lengthof:
+                self.lengthof = new_size
+            else:
+                raise Exception("The new size should be greater than the current size")
+        else:
+            raise Exception("Cannot change the None to length")
+
+
 
 
 
