@@ -45,6 +45,80 @@ class String():
                 raise Exception(f"Expected a character, but string of length {len(throw_away_object)} found")
         else:
             raise TypeError("Expected a string")
+
+    # get the character 
+    # at the specified index
+    def character_at(self, index):
+        if self.length() > index:
+            return self.__string[index]
+        else:
+            raise Exception("Index out of range")
+
+    # replace a specific character 
+    # by annother word
+    def replace(self, exists, new):
+        # Create a new string
+        # check whether both parameters
+        # are strings
+
+        # if yes loop through each element in 
+        # the list and if the find the existsing 
+        # string replace it with the new one
+
+        # and return the new_string
+
+        new_string = ""
+        if isinstance(exists, str) and isinstance(new, str):
+            for element in self.__string:
+                if element == exists:
+                    new_string += new
+                else:
+                    new_string += element
+        else:
+            raise TypeError("Arguments expected to be strings")
+        return new_string
+
+    # check for startswi5th or endswith
+    def starts_with(self, element):
+        if self.__string == "":
+            return False
+        else:
+            return self.__string[0] == element
+
+    def ends_with(self, element):
+        if self.__string == "":
+            return False
+        else:
+            return self.__string[-1] == element
+
+    # remove all the spaces
+    # from the string
+    def remove_spaces(self):
+        # create a new string
+        # loop through each element
+        # of the string
+        # if the string is not a space
+        # add it to the
+        # new string
+        new_string = ""
+        for element in self.__string:
+            if element is not " ":
+                new_string += element
+        return new_string
+
+    # get the index of the character
+    def index(self, character):
+        # if the length of the
+        # string is 1 return
+        # the index of the specified
+        # element in the
+        # string
+        character = str(character)
+        if len(character) == 1:
+            return self.__string.index(character)
+        else:
+            raise Exception(f"Expected a character, but string of length {len(character)} found")
+
     # the repr function
     # is added inorder to 
     # return the private
