@@ -1,13 +1,21 @@
-from lol.database.database import LOL as Table
-import lol.datatypes.array as data
+from lol.datatypes.string import String
 
-m = data.LOLArray(int)
-m.add(5443543)
-m.add(423424)
-m.add(824898234)
-m.add(898498239842)
+f = String(74545457)
 
-print(m.range("max"))
+print(f.length())
+
+print(f.has("7"))
+print(f.throw("5"))
+# from lol.database.database import LOL as Table
+# import lol.datatypes.array as data
+
+# m = data.LOLArray(int)
+# m.add(5443543)
+# m.add(423424)
+# m.add(824898234)
+# m.add(898498239842)
+
+# print(m.range("max"))
 
 # m = data.Maps((int, int))
 
