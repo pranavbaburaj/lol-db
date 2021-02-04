@@ -5,10 +5,12 @@ m = data.Maps((int, int))
 
 m.add(6, 7)
 
-m.add(6, 7)
-m.add(8, 7)
+m.add(8, 8)
+m.add(5, 7)
 
-print(m.has(8))
+m.change(5, 33423424)
+print(m.get())
+
 # d = Table("hello", ["data", "bata"])
 
 # f = data.LOLArray(int, None)

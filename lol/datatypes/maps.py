@@ -38,3 +38,51 @@ class Maps:
         # key is present in the dictionary
         # and return a boolean value
         return key_item in self.__dict
+
+    # get the length of the map
+    def length(self):
+        return len(self.__dict)
+
+    # delete the map item
+    # based on the parameter
+    # passed in
+    def delete(self, delete_key):
+        # check if the specified
+        # key is present in the
+        # map
+
+        # if true delete it and return 
+        # the map
+        # else raise an Exception
+        if delete_key in self.__dict:
+            del self.__dict[delete_key]
+            return self.get()
+        else:
+            raise Exception(f"Cannot find key {delete_key}")
+
+    # filter the map
+    # for a specific
+    # value
+    def filter(self, filter_value):
+        # loop through each dict
+        # keys and if the value 
+        # match append it to the array
+        # and return it
+        find_arr = []
+
+        for dict_key in self.__dict:
+            if self.__dict[dict_key] == filter_value:
+                find_arr.append(dict_key)
+        return find_arr
+
+    def clear(self):
+        self.__dict = {}
+        return self.get()
+
+    # change a specific value
+    def change(self, k, i):
+        if k in self.__dict:
+            if isinstance(i, self.types[1]):
+                self.__dict[k] = i
+        
+        
