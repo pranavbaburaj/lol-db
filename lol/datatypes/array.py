@@ -202,6 +202,24 @@ class LOLArray():
             )
             ]
 
+    def front(self):
+        if len(self.__array_members) is not 0:
+            return self.__array_members[0]
+
+    def back(self):
+        if len(self.__array_members) is not 0:
+            return self.__array_members[-1]
+
+    def range(self, range):
+        if range == "max":
+            return max(self.__array_members)
+        elif range == "min":
+            return min(self.__array_members)
+        else:
+            raise Exception("Range should be max or min")
+
+
+
 
 
 

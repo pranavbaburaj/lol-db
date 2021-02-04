@@ -1,15 +1,23 @@
 from lol.database.database import LOL as Table
-import lol.datatypes.maps as data
+import lol.datatypes.array as data
 
-m = data.Maps((int, int))
+m = data.LOLArray(int)
+m.add(5443543)
+m.add(423424)
+m.add(824898234)
+m.add(898498239842)
 
-m.add(6, 7)
+print(m.range("max"))
 
-m.add(8, 8)
-m.add(5, 7)
+# m = data.Maps((int, int))
 
-m.change(5, 33423424)
-print(m.get())
+# m.add(6, 7)
+
+# m.add(8, 8)
+# m.add(5, 7)
+
+# m.change(5, 33423424)
+# print(m.get())
 
 # d = Table("hello", ["data", "bata"])
 
