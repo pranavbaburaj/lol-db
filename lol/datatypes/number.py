@@ -85,6 +85,9 @@ class Number():
     
     # check whether the number is
     # an integer
+    # via splitting the decimal
+    # and verfying the
+    # length
     @staticmethod
     def is_integer(number):
         return len(str(number).split(".")) == 1
