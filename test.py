@@ -1,13 +1,17 @@
-from lol.datatypes.string import String
+from lol.datatypes.interface import Interface
 
-f = String(" qewd qec cwefcw")
+d = Interface({"data" : [str]})
 
-print(f.length())
+# from lol.datatypes.string import String
 
-# print(f.has("7"))
-print(f.character_at(3))
+# f = String(" qewd qec cwefcw")
 
-print(f.remove_spaces())
+# print(f.length())
+
+# # print(f.has("7"))
+# print(f.character_at(3))
+
+# print(f.remove_spaces())
 # from lol.database.database import LOL as Table
 # import lol.datatypes.array as data
 
