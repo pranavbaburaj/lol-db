@@ -2,6 +2,9 @@ from lol.datatypes.interface import Interface
 
 d = Interface({"data" : [str]})
 
+l = d.create("Hai")
+
+print(l.get_item("data"))
 # from lol.datatypes.string import String
 
 # f = String(" qewd qec cwefcw")
