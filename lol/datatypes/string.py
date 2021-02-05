@@ -6,6 +6,7 @@ import string
 
 class String():
     def __init__(self, string_object):
+        # the main string
         self.__string = str(string_object)
 
     # get the length of the 
@@ -78,6 +79,11 @@ class String():
             raise TypeError("Arguments expected to be strings")
         return new_string
 
+    # return the string in the form
+    # of a list
+    def each(self):
+        return list(self.__string)
+        
     # check for startswi5th or endswith
     def starts_with(self, element):
         if self.__string == "":
@@ -105,6 +111,27 @@ class String():
             if element is not " ":
                 new_string += element
         return new_string
+
+    # get the number of times 
+    # a character appears
+    # int the string
+    
+    def count(self, target):
+        # loop through each
+        # element in the
+        # string and if the character
+        # matched the target
+        # increment the target_count
+
+        target_count = 0
+
+        if len(target) == 1:
+            for el in self.__string:
+                if el == target:
+                    target_count += 1
+            return target_count
+        else:
+            raise Exception(f"Expected a character, but string of length {len(target)} found")
 
     # get the index of the character
     def index(self, character):
