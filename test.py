@@ -1,10 +1,19 @@
-from lol.datatypes.interface import Interface
+from lol.datatypes.number import Number
 
-d = Interface({"data" : [str]})
+d = Number(4234.)
 
-l = d.create("Hai")
+print(d.set_(66))
+print(d.get())
 
-print(l.get_item("data"))
+
+# print(d.get())
+# from lol.datatypes.interface import Interface
+
+# d = Interface({"data" : [str]})
+
+# l = d.create("Hai")
+
+# print(l.get_item("data"))
 # from lol.datatypes.string import String
 
 # f = String(" qewd qec cwefcw")
