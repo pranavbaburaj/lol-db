@@ -7,7 +7,7 @@
 import math
 import random
 
-class LOLArray():
+class Array():
     def __init__(self, typeof_array, length=None):
         # the type of the
         # elements in the array

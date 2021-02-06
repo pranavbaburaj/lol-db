@@ -1,9 +1,13 @@
-from lol.datatypes.number import Number
+from lol.database.database import Database
 
-d = Number(4234.)
+d = Database("hello world", ["name", "age"])
 
-print(d.set_(66))
-print(d.get())
+# from lol.datatypes.number import Number
+
+# d = Number(4234.)
+
+# print(d.set_(66))
+# print(d.get())
 
 
 # print(d.get())

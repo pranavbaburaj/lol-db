@@ -1,3 +1,5 @@
+import os
+import json
 # the main database 
 
 # the table class
@@ -7,12 +9,15 @@
 # by  a json file
 # in the name of the table
 
-class LOL():
+class Database():
     def __init__(self, table_name, fields):
         self.table = self.__get_table_name(table_name)
         self.fields = self.__get_field_name(fields)
 
-        print(self.fields)
+        # create the database
+        self.filename = self.__create_new_database_file(self.table)
+
+        print(self.filename)
 
     # get the table name
     def __get_table_name(self, table_name):
@@ -47,3 +52,12 @@ class LOL():
             return final_fields
         else:
             raise TypeError("Fields are expected to be dicts")
+
+    def __create_new_database_file(self, database):
+        # create the database
+        # file for storing the information
+        filename = os.path.join(os.getcwd(), f"{database}.lol")
+        with open(filename, "w") as create_file_object:
+            create_file_object.write(" ")
+        
+        return filename

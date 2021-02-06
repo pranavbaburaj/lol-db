@@ -1,5 +1,5 @@
 
-class LOLMaps:
+class Maps:
     def __init__(self, map_types):
         self.types = self.get_map_data_type(map_types)
 
