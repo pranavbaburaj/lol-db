@@ -2,8 +2,7 @@ from lol.database.database import Database
 
 d = Database("hello world", ["name", "age"])
 
-d.add([5, 55445])
-
+d.add([3, 4])
 # from lol.datatypes.number import Number
 
 # d = Number(4234.)

@@ -2,6 +2,7 @@ import os
 import json
 # the main database 
 
+import uuid
 # the table class
 # used to create
 # many tables in the database
@@ -14,6 +15,9 @@ class Database():
         self.table = self.__get_table_name(table_name)
         self.fields = self.__get_field_name(fields)
 
+        # create the database
+        self.filename = self.__create_new_database_file(self.table)
+
         # index of the data
         # or id of each data fields
         self.idx = 0
@@ -22,12 +26,14 @@ class Database():
         # is going to be stored
         self.__data_dict = self.__get_file_dict()
 
-        # create the database
-        self.filename = self.__create_new_database_file(self.table)
+
+        print(self.__data_dict)
+
+    
         self.__commit_additions()
 
 
-        print(self.filename)
+        # print(self.filename)
 
     # get the table name
     def __get_table_name(self, table_name):
@@ -67,8 +73,9 @@ class Database():
         # create the database
         # file for storing the information
         filename = os.path.join(os.getcwd(), f"{database}.lol")
-        with open(filename, "w") as create_file_object:
-            create_file_object.write(" ")
+        if not os.path.exists(filename):
+            with open(filename, "w") as create_file_object:
+                json.dump({}, create_file_object)
         
         
         return filename
@@ -102,7 +109,7 @@ class Database():
                 # to the dict key
                 for index in range(len(self.fields)):
                     new_dict[self.fields[index]] = data_to_save[index]
-                self.__data_dict[str(self.idx)] = new_dict
+                self.__data_dict[str(uuid.uuid4())] = new_dict
 
                 # increment the index 
                 # by 1
@@ -117,7 +124,11 @@ class Database():
     # the database file as json
     # or return the dict
     def __get_file_dict(self):
-        return {}
+        with open(self.filename, "r") as json_reader:
+            try:
+                return json.load(json_reader)
+            except Exception as exc:
+                raise {}
 
     # check whether the parameter
     # length is equal to the
