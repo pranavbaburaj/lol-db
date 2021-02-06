@@ -14,8 +14,18 @@ class Database():
         self.table = self.__get_table_name(table_name)
         self.fields = self.__get_field_name(fields)
 
+        # index of the data
+        # or id of each data fields
+        self.idx = 0
+
+        # the main dictionary in which the data
+        # is going to be stored
+        self.__data_dict = self.__get_file_dict()
+
         # create the database
         self.filename = self.__create_new_database_file(self.table)
+        self.__commit_additions()
+
 
         print(self.filename)
 
@@ -60,4 +70,61 @@ class Database():
         with open(filename, "w") as create_file_object:
             create_file_object.write(" ")
         
+        
         return filename
+    
+    # commit the changes to the
+    # file 
+    # write the updated dictionary
+    # to the file
+    def __commit_additions(self):
+        with open(self.filename, "w") as json_data_writer:
+            json.dump(self.__data_dict, json_data_writer, indent=6)
+
+    # add a new data to the 
+    # the self.dictionary and
+    # commit the changes
+    # (write it to the file)
+    def add(self, data_to_save):
+        # check if the parameter
+        # is a list object
+        if isinstance(data_to_save, list):
+            # check if the length of the field
+            # match with the length of the 
+            # parameter passed in
+            # else, throw an Exception 
+            check_data = self.__check_field_length(data_to_save)
+            if check_data:
+                new_dict = {}
+                # for item in fields
+                # change field item to key
+                # and asign data[index]
+                # to the dict key
+                for index in range(len(self.fields)):
+                    new_dict[self.fields[index]] = data_to_save[index]
+                self.__data_dict[str(self.idx)] = new_dict
+
+                # increment the index 
+                # by 1
+                self.idx += 1
+
+                # commit the changes made to the dict
+                self.__commit_additions()
+        else:
+            raise TypeError("Expected a list")
+
+    # get the data inside of
+    # the database file as json
+    # or return the dict
+    def __get_file_dict(self):
+        return {}
+
+    # check whether the parameter
+    # length is equal to the
+    # self.fields length
+    # else raise an error
+    def __check_field_length(self, data):
+        if len(data) == len(self.fields):
+            return True
+        else:
+            raise Exception(f"Expected length {len(self.fields)} but got {len(data)}")
