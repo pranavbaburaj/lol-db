@@ -2,7 +2,10 @@ from lol.database.database import Database
 
 d = Database("hello world", ["name", "age"])
 
-d.add([3, 4])
+# l = d.ids()[0]
+# d.change(l, "age", 8183912893812)
+# d.delete("d.ids()[0]")
+
 # from lol.datatypes.number import Number
 
 # d = Number(4234.)

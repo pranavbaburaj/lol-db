@@ -2,7 +2,11 @@ import os
 import json
 # the main database 
 
+# uuid is used
+# to create unique
+# user id(s)
 import uuid
+
 # the table class
 # used to create
 # many tables in the database
@@ -27,7 +31,7 @@ class Database():
         self.__data_dict = self.__get_file_dict()
 
 
-        print(self.__data_dict)
+        # print(self.__data_dict)
 
     
         self.__commit_additions()
@@ -130,6 +134,37 @@ class Database():
             except Exception as exc:
                 raise {}
 
+    # get all the uuid's
+    # in the data storing
+    # dictioanry
+    def ids(self):
+        return [data_key for data_key in self.__data_dict]
+
+    # clear all the fields
+    # int the database
+    # or empty the database
+    def clear(self):
+        # set the __data_dict to {}
+        # and commit all the changes
+        # to the file
+        self.__data_dict = {}
+        self.__commit_additions()
+
+    # delete a data field based
+    # on the given key
+    def delete(self, delete_object_key):
+        if delete_object_key in self.__data_dict:
+            del self.__data_dict[delete_object_key]
+            self.__commit_additions()
+        else:
+            raise KeyError(f"Cannot find object with id {delete_object_key}")
+
+    # change a specific value
+    # from the database
+    def change(self, id, identifier, data):
+        self.__data_dict[id][identifier] = data
+        self.__commit_additions()
+        
     # check whether the parameter
     # length is equal to the
     # self.fields length
