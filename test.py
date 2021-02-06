@@ -2,7 +2,7 @@ from lol.database.database import Database
 
 d = Database("hello world", ["name", "age"])
 
-
+print(d.filter({"age" : 37}))
 # d.set_track_modification(False)
 # d.add([5, 7])
 

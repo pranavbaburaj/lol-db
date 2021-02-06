@@ -195,6 +195,90 @@ class Database():
         if self.modifications:
             self.__create_message("Changed data in the database")
 
+    # filter out objects
+    # from the database dict based 
+    # on the parameters
+    # passed in
+    def filter(self, matches):
+        # make sure that the
+        # parameter is a dict
+        # else, throw a TypeError
+        if isinstance(matches, dict):
+            # check if the length
+            # of the matches is equsl
+            # to the length of the
+            # fields
+            data = self.__check_dict_length(matches)
+            if data:
+                fields = []
+                for el in matches:
+                    # append to the fields if it
+                    # equal to the entered data
+                    fields.append(self.__get_key_match(el, matches[el]))
+                
+                # return all duplicate items
+                # from the fields
+                return self.__remove_dup(fields)
+        else:
+            raise TypeError("Expected a dict")
+
+    # return duplicat items
+    def __remove_dup(self, fields):
+        all_keys = []
+        # take each element of
+        # the first fields array and
+        # make sure it is also present in
+        # in the other array
+        # if True:append to the final array
+        for el in fields[0]:
+            if self.__has_in_all(el, fields):
+                all_keys.append(el)
+        return all_keys
+
+    # check if an element is present
+    # in given array
+    def __has_in_all(self, el ,fi):
+        # for element in
+        # fields
+        # if el not present in one field
+        # return false
+        for k_fi in fi:
+            if el in k_fi:
+                pass
+            else:
+                return False
+        return True
+            
+
+    # check whether it is same
+    # as in the dictionary
+    def __get_key_match(self, key, value):
+        data = []
+        for el in self.__data_dict:
+            if self.__data_dict[el][key] == value:
+                data.append(el)
+        return data
+
+    # get the object with a specific id
+    def get(self, key):
+        if key in self.__data_dict:
+            return self.__data_dict[key]
+        else:
+            return {}
+
+    # check whether the size
+    # of the dict match with the matches
+    def __check_dict_length(self, match):
+        # loop through each element
+        # in the dictionary and
+        # make sure that the element
+        # is present in the fields
+        # else , raise a KeyError
+        for el in match:
+            if el not in self.fields:
+                raise KeyError(f"Cannot find key {el}")
+        return True
+
 
     # check whether the parameter
     # length is equal to the
