@@ -7,6 +7,11 @@ import json
 # user id(s)
 import uuid
 
+# logging module
+# is used log
+# errors and warnings
+import logging as logger
+
 # the table class
 # used to create
 # many tables in the database
@@ -36,6 +41,7 @@ class Database():
     
         self.__commit_additions()
 
+        self.modifications = True
 
         # print(self.filename)
 
@@ -121,8 +127,17 @@ class Database():
 
                 # commit the changes made to the dict
                 self.__commit_additions()
+
+                # create a logging data
+                if self.modifications:
+                    self.__create_message("Added data to the database")
         else:
             raise TypeError("Expected a list")
+
+    # create info message
+    # when doing actions
+    def __create_message(self, data):
+        print(f"INFO:{data}")
 
     # get the data inside of
     # the database file as json
@@ -150,21 +165,37 @@ class Database():
         self.__data_dict = {}
         self.__commit_additions()
 
+        if self.modifications:
+            self.__create_message("Cleared the database")
+
     # delete a data field based
     # on the given key
     def delete(self, delete_object_key):
         if delete_object_key in self.__data_dict:
             del self.__data_dict[delete_object_key]
             self.__commit_additions()
+
+            if self.modifications:
+                self.__create_message("Deleted data from database")
         else:
             raise KeyError(f"Cannot find object with id {delete_object_key}")
+
+    def set_track_modification(self, new_modify_value):
+        if isinstance(new_modify_value, bool):
+            self.modifications = new_modify_value
+        else:
+            raise TypeError("Expected a boolean value")
 
     # change a specific value
     # from the database
     def change(self, id, identifier, data):
         self.__data_dict[id][identifier] = data
         self.__commit_additions()
-        
+
+        if self.modifications:
+            self.__create_message("Changed data in the database")
+
+
     # check whether the parameter
     # length is equal to the
     # self.fields length

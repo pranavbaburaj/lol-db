@@ -2,6 +2,10 @@ from lol.database.database import Database
 
 d = Database("hello world", ["name", "age"])
 
+
+# d.set_track_modification(False)
+# d.add([5, 7])
+
 # l = d.ids()[0]
 # d.change(l, "age", 8183912893812)
 # d.delete("d.ids()[0]")
