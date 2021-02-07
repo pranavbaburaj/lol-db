@@ -1,3 +1,9 @@
 # LOL
-<img src="https://cdn.shopify.com/s/files/1/0160/2840/1712/products/joy_characterai_ng.png?v=1591045449" height=200 width=250 />
+Lol is a database library(An improved version of [json-based-database](https://github.com/pranavbaburaj/json-based-database))
 <hr>
+
+# Features
+- A set of data types
+    - Numbers
+    - Strings
+    - 

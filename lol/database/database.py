@@ -258,6 +258,8 @@ class Database():
             if self.__data_dict[el][key] == value:
                 data.append(el)
         return data
+        
+        
 
     # get the object with a specific id
     def get(self, key):
