@@ -17,11 +17,13 @@ Lol is a database library(An improved version of [json-based-database](https://g
 
 ## How to use it
 ### Database
-Under construction
+See the database documentation [here](https://github.com/pranavbaburaj/lol/blob/master/docs/database.md)
 
 <hr>
 
 ### Datatypes
+
+See all the datatype methods [here](https://github.com/pranavbaburaj/lol/blob/master/docs/types.md)
 #### Arrays
 ```python
 from lol.datatypes.arrays import Array
