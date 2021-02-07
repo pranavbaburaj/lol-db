@@ -7,14 +7,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lol", # Replace with your own username
+    name="loldb", # Replace with your own username
     version="0.0.1",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
     description="A simple json database",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pranavbaburaj/lol-db",
+    url="https://github.com/pranavbaburaj/lol",
     packages=setuptools.find_packages(),
     install_requires=[
           'dicttoxml'
