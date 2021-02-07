@@ -1,8 +1,13 @@
 from lol.database.database import Database
+from lol.database.serializer import DatabaseSerializer
 
 d = Database("hello world", ["name", "age"])
 
-print(d.filter({"age" : 37}))
+d.add(["Hai", 885885])
+
+f = DatabaseSerializer(d)
+
+print(f.xml())
 # d.set_track_modification(False)
 # d.add([5, 7])
 

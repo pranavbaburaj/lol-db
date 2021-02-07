@@ -280,6 +280,10 @@ class Database():
             if el not in self.fields:
                 raise KeyError(f"Cannot find key {el}")
         return True
+    
+    # this is a secret function
+    def get_dict_all_data_values_as_dict(self):
+        return self.__data_dict
 
 
     # check whether the parameter
