@@ -26,20 +26,20 @@ See the database documentation [here](https://github.com/pranavbaburaj/lol/blob/
 See all the datatype methods [here](https://github.com/pranavbaburaj/lol/blob/master/docs/types.md)
 #### Arrays
 ```python
-from loldb.datatypes.arrays import Array
+from lol.datatypes.arrays import Array
 
 array = Array(int, length=None)
 ```
 #### Maps
 ```python
-from loldb.datatypes.maps import Maps
+from lol.datatypes.maps import Maps
 
 maps = Maps((int, str))
 ```
 
 #### Interfaces
 ```python
-from loldb.datatypes.interface import Interface
+from lol.datatypes.interface import Interface
 
 data = Interface({
     name : [str, int],
@@ -55,7 +55,7 @@ print(obj.get('name'))
 
 #### Numbers
 ```python
-from loldb.datatypes.number import Number
+from lol.datatypes.number import Number
 
 num = Number("777")
 
@@ -63,7 +63,7 @@ num = Number("777")
 
 #### Strings
 ```python
-from loldb.datatypes.string import String
+from lol.datatypes.string import String
 
 string = String(7777)
 ```
