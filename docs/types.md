@@ -1,10 +1,10 @@
 ## Types available in LOL
 <hr>
-- Arrays(typed)
+- Arrays (typed)
 <br>
-- Maps(typed)
+- Maps (typed)
 <br>
-- interfaces(typed)
+- interfaces (typed)
 <br>
 - Strings
 <br>
