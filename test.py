@@ -1,13 +1,13 @@
-from lol.database.database import Database
-from lol.database.serializer import DatabaseSerializer
+# from lol.database.database import Database
+# from lol.database.serializer import DatabaseSerializer
 
-d = Database("hello world", ["name", "age"])
+# d = Database("hello world", ["name", "age"])
 
-d.add(["Hai", 885885])
+# d.add(["Hai", 885885])
 
-f = DatabaseSerializer(d)
+# f = DatabaseSerializer(d)
 
-print(f.xml())
+# print(f.xml())
 # d.set_track_modification(False)
 # d.add([5, 7])
 

@@ -8,10 +8,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="loldb", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
-    description="A simple json database",
+    description="A simple json database and other utilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pranavbaburaj/lol",

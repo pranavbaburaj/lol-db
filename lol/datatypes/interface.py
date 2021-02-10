@@ -24,6 +24,16 @@ class InterfaceObject():
         else:
             raise KeyError(f"Cannot find {property_}")
 
+    # set the interface
+    # property
+    def set_item(self, property_, value):
+        if property_ in self.values:
+            typeof = isinstance(value, type(
+                self.values[property_]
+            ))
+            return typeof
+        else:
+            raise KeyError(f"Cannot find {property_}")
 
     def __repr__(self):
         return ""
