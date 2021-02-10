@@ -26,12 +26,25 @@ class InterfaceObject():
 
     # set the interface
     # property
+
+    # Note : cannot change types after assignment
     def set_item(self, property_, value):
+        # check if property_ is in self.values
+        # if yes, pass
+        # else throw a KeyError
         if property_ in self.values:
+            # check whether the current type
+            # of the key and the new type is same
+            # if yes , change the value
+            # else , raise  a KeyError
             typeof = isinstance(value, type(
                 self.values[property_]
             ))
-            return typeof
+
+            if typeof:
+                self.values[property_] = value
+            else:
+                raise TypeError("Cannot change types after assignment")
         else:
             raise KeyError(f"Cannot find {property_}")
 
