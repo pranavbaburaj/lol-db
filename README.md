@@ -51,6 +51,9 @@ obj = data.create("Pranav", 13)
 
 # gives you the name
 print(obj.get_item('name'))
+
+# change the value
+obj.set_item('name', 'new-name')
 ```
 
 #### Numbers
