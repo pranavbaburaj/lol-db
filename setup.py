@@ -17,7 +17,8 @@ setuptools.setup(
     url="https://github.com/pranavbaburaj/lol",
     packages=setuptools.find_packages(),
     install_requires=[
-          'dicttoxml'
+          'dicttoxml',
+          "clint"
       ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,12 +1,13 @@
-from lol.datatypes.interface import Interface
 
-data = Interface({"name":[str], "age" : [int]})
-o = data.create("Pranav", 13)
+# from lol.datatypes.interface import Interface
 
-print(o.get_item("name"))
+# data = Interface({"name":[str], "age" : [int]})
+# o = data.create("Pranav", 13)
 
-o.set_item("name", "99")
-print(o.get_item("name"))
+# print(o.get_item("name"))
+
+# o.set_item("name", "99")
+# print(o.get_item("name"))
 
 # from lol.database.database import Database
 # from lol.database.serializer import DatabaseSerializer
