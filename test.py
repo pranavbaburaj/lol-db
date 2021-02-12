@@ -1,14 +1,18 @@
 from lol.switch import switch
 
 def data():
-    pass
+    print("lol")
 
 d = switch(
     5, {
-        6 : data
+        8 : data,
+        6 : data,
+        58 : data,
+        None : data
     }
 )
-print(d)
+
+d()
 
 # from lol.datatypes.maps import Maps
 
