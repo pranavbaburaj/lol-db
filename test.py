@@ -1,8 +1,23 @@
-from lol.datatypes.array import Array
+from lol.datatypes.maps import Maps
 
-data = Array.create({"name" : ["hello"], 4 : ["d"]})
+mapobj = Maps.create({
+    "name" : 9,
+    "name" : 9938,
+    "age" : 9,
 
-print(data.get())
+    "class" : 8,
+    "age" : 00,
+    "house" :999,
+    "class" : 99999
+})
+
+print(mapobj.get())
+
+# from lol.datatypes.array import Array
+
+# data = Array.create({"name" : ["hello"], 4 : ["d"]})
+
+# print(data.get())
 
 # from lol.datatypes.interface import Interface
 

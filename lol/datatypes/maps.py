@@ -84,5 +84,70 @@ class Maps:
         if k in self.__dict:
             if isinstance(i, self.types[1]):
                 self.__dict[k] = i
+
+    # convert a list to array
+    @staticmethod
+    def create(convert):
+        if isinstance(convert, list):
+            small_dict = {}
+            for index, element in enumerate(convert):
+                small_dict[index] = str(element)
+            return Maps.get_map_object(
+                int,
+                str,
+                small_dict
+            )
+        elif isinstance(convert, dict):
+            # if the length of the convert
+            # dict is 0 return the map
+            # object of type string
+            if len(convert) == 0:
+                return Maps.get_map_object(
+                    str,str,convert
+                )
+            else:
+                all_keys = [key for key in convert]
+                key = type(all_keys[0])
+                value = type(convert[all_keys[0]])
+
+                all_values = [convert[k] for k in convert]
+
+                for element in all_keys:
+                    if not isinstance(element, key):
+                        for i in range(len(all_keys)):
+                            all_keys[i] = str(all_keys[i])
+
+                for idx, el in enumerate(all_values):
+                    if not isinstance(el, value):
+                        for el_object in range(len(all_values)):
+                            all_values[el_object] = str(all_values[el_object])
+
+                small_dict = {}
+                for index, el in enumerate(all_keys):
+                    small_dict[el] = all_values[index]
+
+                return Maps.get_map_object(
+                    type(all_keys[0]),
+                    type(all_values[0]),
+                    small_dict
+                )
+        else:
+            raise TypeError("Create method expected a list or a dict")
+
+    # get a new map object
+    def get_map_object(key, value, value_dict):
+        map_object = Maps(
+            (key, value)
+        )
+        
+        # add all dict items to the
+        # map objecta nd return it
+        for key_value in value_dict:
+            map_object.add(
+                key_value, value_dict[key_value]
+            )
+
+        return map_object
+
         
         
