@@ -88,6 +88,10 @@ class Maps:
     # convert a list to array
     @staticmethod
     def create(convert):
+        # if the object is a list
+        # create a map object and for
+        # each element in the list
+        # map[index] = elemetn
         if isinstance(convert, list):
             small_dict = {}
             for index, element in enumerate(convert):
@@ -106,32 +110,49 @@ class Maps:
                     str,str,convert
                 )
             else:
+                # get all the keys in the dict
                 all_keys = [key for key in convert]
+
+                # the type of the key
                 key = type(all_keys[0])
+                
+                # the type of the value
                 value = type(convert[all_keys[0]])
 
                 all_values = [convert[k] for k in convert]
 
+                # for all element in keys
+                # if the type of keys is not
+                # equal convert all keys to strings
                 for element in all_keys:
                     if not isinstance(element, key):
                         for i in range(len(all_keys)):
                             all_keys[i] = str(all_keys[i])
 
+                # for all element in values
+                # if the type of value is not
+                # equal convert all values to strings
                 for idx, el in enumerate(all_values):
                     if not isinstance(el, value):
                         for el_object in range(len(all_values)):
                             all_values[el_object] = str(all_values[el_object])
 
                 small_dict = {}
+                # create a dict and for each index in
+                # all_keys and all_values
+                # all_keys[idx] = all_values[idx]
                 for index, el in enumerate(all_keys):
                     small_dict[el] = all_values[index]
 
+                # return a new map object
                 return Maps.get_map_object(
                     type(all_keys[0]),
                     type(all_values[0]),
                     small_dict
                 )
         else:
+            # if the type is not a list or a
+            # dict throw an error
             raise TypeError("Create method expected a list or a dict")
 
     # get a new map object
