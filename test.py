@@ -1,3 +1,8 @@
+from lol.datatypes.array import Array
+
+data = Array.create({"name" : ["hello"], 4 : ["d"]})
+
+print(data.get())
 
 # from lol.datatypes.interface import Interface
 

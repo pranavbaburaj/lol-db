@@ -239,6 +239,107 @@ class Array():
         else:
             raise Exception("Cannot change the None to length")
 
+    # get all the data from the 
+    # array
+    def get(self):
+        return self.all()
+
+    # convert the given parameter
+    # into a lol.datatype.array object
+    @staticmethod
+    def create(convert):
+        # typeof and lengthof
+        if isinstance(convert, int) or isinstance(convert, float):
+            # if the parameter is an integer or a float
+            # convert it to an integer and obtain a list of 
+            # all number in the range and return a 
+            # new array object with these elements
+            convert = int(convert)
+            convert_insert_array = [data for data in range(0, convert + 1)]
+            return Array.insert_array_element(
+                int,
+                convert_insert_array
+            )
+
+        elif isinstance(convert, str):
+            return Array.insert_array_element(
+                str,
+                [char for char in str(convert)]
+            )
+
+        elif isinstance(convert, list):
+            # if the parameter is an array
+            # if the length of parameter is 0(is empty)
+            # return an Array object with string type
+            # else, get the type of the first array
+            # element 
+            if len(convert) == 0:
+                return Array.insert_array_element(
+                    str,
+                    []
+                )
+            else:
+                # get the type of the first array
+                # element and loop through the array
+                # to make sure that all the types are
+                # equal, if not convert all the elements 
+                # to a string and return an array
+                # object
+                typeof_object = type(convert[0])
+                for index, element in enumerate(convert):
+                    type_matched = isinstance(element, typeof_object)
+                    if not type_matched:
+                        for el in range(len(convert)):
+                            convert[el] = str(convert[el])
+                        break
+
+
+                return Array.insert_array_element(
+                    type(convert[0]),
+                    convert
+                )
+        elif isinstance(convert, dict):
+            # if the parameter is a dict
+            # follow the same steps used while 
+            # converting the array
+            array_elements = [key for key in convert]
+            typeof_object = type(array_elements[0])
+
+            for index, element in enumerate(array_elements):
+                type_matched = isinstance(element, typeof_object)
+
+                if not type_matched:
+
+                    for el in range(len(array_elements)):
+                        array_elements[el] = str(array_elements[el])
+                    break
+
+            return Array.insert_array_element(
+                type(array_elements[0]),
+                array_elements
+            )
+
+
+    # create a new array instance
+    # and add the given array items
+    # into it
+    @staticmethod
+    def insert_array_element(typeof, convert_array):
+        # create a new 
+        # array object
+        array_object = Array(typeof)
+
+        # insert everything in the convert_array
+        # into the array_object
+        for element in range(len(convert_array)):
+            array_object.add(
+                convert_array[element]
+            )
+
+        # return the array object
+        return array_object
+
+
 
 
 
