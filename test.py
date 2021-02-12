@@ -1,17 +1,29 @@
-from lol.datatypes.maps import Maps
+from lol.switch import switch
 
-mapobj = Maps.create({
-    "name" : 9,
-    "name" : 9938,
-    "age" : 9,
+def data():
+    pass
 
-    "class" : 8,
-    "age" : 00,
-    "house" :999,
-    "class" : 99999
-})
+d = switch(
+    5, {
+        6 : data
+    }
+)
+print(d)
 
-print(mapobj.get())
+# from lol.datatypes.maps import Maps
+
+# mapobj = Maps.create({
+#     "name" : 9,
+#     "name" : 9938,
+#     "age" : 9,
+
+#     "class" : 8,
+#     "age" : 00,
+#     "house" :999,
+#     "class" : 99999
+# })
+
+# print(mapobj.get())
 
 # from lol.datatypes.array import Array
 
