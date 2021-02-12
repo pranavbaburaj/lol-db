@@ -1,4 +1,3 @@
-
 """
 MIT License
 
@@ -23,8 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+
 def number():
     return [int, float]
+
 
 def string():
     return [str]

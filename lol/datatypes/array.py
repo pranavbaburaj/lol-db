@@ -1,4 +1,3 @@
-
 # the lol arrys
 # the speciality of lol
 # arrays is that
@@ -6,6 +5,7 @@
 # support duplicate elements
 import math
 import random
+
 
 class Array():
     def __init__(self, typeof_array, length=None):
@@ -15,7 +15,7 @@ class Array():
         self.typeof = typeof_array
 
         # array members
-        # this variable is private 
+        # this variable is private
         # the user can only access
         # this via self.all()
         # function
@@ -35,7 +35,7 @@ class Array():
         # pass else check if the size
         # limit is exceeded
         if self.lengthof is not None:
-        
+
             if len(self.__array_members) == self.lengthof:
                 raise Exception("Array size limit exceeded")
 
@@ -91,11 +91,10 @@ class Array():
             """
             if len(self.__array_members) % 2 == 0:
                 arr_split_index = math.floor(self.len() / 2)
-                return (self.__array_members[arr_split_index] + self.__array_members[arr_split_index - 1]) / 2
+                return (self.__array_members[arr_split_index] +
+                        self.__array_members[arr_split_index - 1]) / 2
             else:
-                return self.__array_members[
-                    math.floor(self.len() / 2)
-                ]
+                return self.__array_members[math.floor(self.len() / 2)]
 
         else:
             raise Exception("elements should be numbers")
@@ -130,25 +129,22 @@ class Array():
                 all_arr_indexes.append(index)
 
         return all_arr_indexes
-        
 
-    # return the first appearance 
+    # return the first appearance
     def first(self, find_element):
         arr = self.index(find_element)
         if len(arr) is not 0:
             return arr[0]
-        
+
     # get the index of
     # the largest number in
     # the list
     def peak_index(self):
-        return self.__array_members.index(
-            max(self.all())
-        )
+        return self.__array_members.index(max(self.all()))
 
     # get the count of the number
-    # of times an element 
-    # appears in the 
+    # of times an element
+    # appears in the
     # array
     def count(self, target_element):
         return len(self.index(target_element))
@@ -180,7 +176,7 @@ class Array():
     # containing elements
     # at the alternate indexes
     def alternate_indexes(self):
-        v_a_r = [[],[]]
+        v_a_r = [[], []]
         for x in range(len(self.__array_members)):
             if x % 2 == 0:
                 v_a_r[0].append(x)
@@ -189,19 +185,14 @@ class Array():
 
         return v_a_r
 
-    # return a random 
+    # return a random
     # element from
     # the array
-    def choice(self): 
+    def choice(self):
         """
         Returns a randome element from the array
         """
-        return self.__array_members[
-            random.randint(
-                0,
-                self.len()
-            )
-            ]
+        return self.__array_members[random.randint(0, self.len())]
 
     def front(self):
         if len(self.__array_members) is not 0:
@@ -235,11 +226,12 @@ class Array():
             if new_size > self.lengthof:
                 self.lengthof = new_size
             else:
-                raise Exception("The new size should be greater than the current size")
+                raise Exception(
+                    "The new size should be greater than the current size")
         else:
             raise Exception("Cannot change the None to length")
 
-    # get all the data from the 
+    # get all the data from the
     # array
     def get(self):
         return self.all()
@@ -251,38 +243,30 @@ class Array():
         # typeof and lengthof
         if isinstance(convert, int) or isinstance(convert, float):
             # if the parameter is an integer or a float
-            # convert it to an integer and obtain a list of 
-            # all number in the range and return a 
+            # convert it to an integer and obtain a list of
+            # all number in the range and return a
             # new array object with these elements
             convert = int(convert)
             convert_insert_array = [data for data in range(0, convert + 1)]
-            return Array.insert_array_element(
-                int,
-                convert_insert_array
-            )
+            return Array.insert_array_element(int, convert_insert_array)
 
         elif isinstance(convert, str):
-            return Array.insert_array_element(
-                str,
-                [char for char in str(convert)]
-            )
+            return Array.insert_array_element(str,
+                                              [char for char in str(convert)])
 
         elif isinstance(convert, list):
             # if the parameter is an array
             # if the length of parameter is 0(is empty)
             # return an Array object with string type
             # else, get the type of the first array
-            # element 
+            # element
             if len(convert) == 0:
-                return Array.insert_array_element(
-                    str,
-                    []
-                )
+                return Array.insert_array_element(str, [])
             else:
                 # get the type of the first array
                 # element and loop through the array
                 # to make sure that all the types are
-                # equal, if not convert all the elements 
+                # equal, if not convert all the elements
                 # to a string and return an array
                 # object
                 typeof_object = type(convert[0])
@@ -293,14 +277,10 @@ class Array():
                             convert[el] = str(convert[el])
                         break
 
-
-                return Array.insert_array_element(
-                    type(convert[0]),
-                    convert
-                )
+                return Array.insert_array_element(type(convert[0]), convert)
         elif isinstance(convert, dict):
             # if the parameter is a dict
-            # follow the same steps used while 
+            # follow the same steps used while
             # converting the array
             array_elements = [key for key in convert]
             typeof_object = type(array_elements[0])
@@ -314,35 +294,22 @@ class Array():
                         array_elements[el] = str(array_elements[el])
                     break
 
-            return Array.insert_array_element(
-                type(array_elements[0]),
-                array_elements
-            )
-
+            return Array.insert_array_element(type(array_elements[0]),
+                                              array_elements)
 
     # create a new array instance
     # and add the given array items
     # into it
     @staticmethod
     def insert_array_element(typeof, convert_array):
-        # create a new 
+        # create a new
         # array object
         array_object = Array(typeof)
 
         # insert everything in the convert_array
         # into the array_object
         for element in range(len(convert_array)):
-            array_object.add(
-                convert_array[element]
-            )
+            array_object.add(convert_array[element])
 
         # return the array object
         return array_object
-
-
-
-
-
-
-
-

@@ -10,6 +10,7 @@
 # f = Interface(types)
 # f.create(data)
 
+
 class InterfaceObject():
     def __init__(self, object_info):
         # the passed in values
@@ -37,9 +38,7 @@ class InterfaceObject():
             # of the key and the new type is same
             # if yes , change the value
             # else , raise  a KeyError
-            typeof = isinstance(value, type(
-                self.values[property_]
-            ))
+            typeof = isinstance(value, type(self.values[property_]))
 
             if typeof:
                 self.values[property_] = value
@@ -51,6 +50,7 @@ class InterfaceObject():
     def __repr__(self):
         return ""
 
+
 class Interface(object):
     def __init__(self, data_params):
         # the main
@@ -59,8 +59,7 @@ class Interface(object):
 
         self.params = self.__get_params(data_params)
 
-
-    # verifying the entered 
+    # verifying the entered
     # parameters and return
     # them
     def __get_params(self, data):
@@ -92,7 +91,8 @@ class Interface(object):
             match = self.__match_param_types(args)
             return InterfaceObject(match)
         else:
-            raise Exception(f"Expected {len(self.params)} arguments but got {len(args)}")
+            raise Exception(
+                f"Expected {len(self.params)} arguments but got {len(args)}")
 
     # check whether
     # the new create interface
@@ -100,13 +100,13 @@ class Interface(object):
     # with self.params
     def __match_param_types(self, data):
         # check if the passed in
-        # parameter is a 
+        # parameter is a
         # tuple, else throw
         # a TYpeError
         if isinstance(data, tuple):
             # the new interface
             interface = {}
-            # loop through each element 
+            # loop through each element
             # and index in the dictionary
             # (self.params)
             for index, key in enumerate(self.params):
@@ -130,9 +130,7 @@ class Interface(object):
                     if allowed_type == "?" or allowed_type == "any":
                         types_matches.append(True)
                     else:
-                        types_matches.append(
-                            allowed_type == type(data[index])
-                        )
+                        types_matches.append(allowed_type == type(data[index]))
                 # if the list is full of False
                 # or if no types match raise
                 # a type error
@@ -144,6 +142,6 @@ class Interface(object):
                     interface[key] = data[index]
             # return the interface dict
             return interface
-            
+
         else:
             raise TypeError("Expected a dict")

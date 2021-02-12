@@ -3,6 +3,7 @@
 # can be integers, floats,
 # doubles, longs stc
 
+
 class Number():
     def __init__(self, number_value):
         # the main number value
@@ -13,7 +14,6 @@ class Number():
         # used instead of using
         # self.value['data']
         self.data = self.value['data']
-
 
     # get the value
     # of the number
@@ -31,7 +31,7 @@ class Number():
             except Exception as number_convert_exception:
                 raise number_convert_exception
 
-    # convert the integer 
+    # convert the integer
     # into string form
     def string(self):
         return str(self.value['data'])
@@ -41,9 +41,9 @@ class Number():
     # integer, float, double, long
     def __get_data_type(self, data):
         return {
-            "data" : data, # the number
-            "type" : type(data), # the type , float or long
-            "negative" : data < 0 # data is negative
+            "data": data,  # the number
+            "type": type(data),  # the type , float or long
+            "negative": data < 0  # data is negative
         }
 
     # set or change the object value
@@ -56,13 +56,13 @@ class Number():
     # fix the number
     # of decimal points
     # to the parameter
-    def to_fixed(self, fix_point=0):  
+    def to_fixed(self, fix_point=0):
         # make sure the type of
         # the parameter is int
         assert isinstance(fix_point, int), "Expected an integer"
-        new_string = "" # create a new string
-        points = str(self.data).split(".") # split on (.)
-        new_string += f"{str(points[0])}." # add the first string   
+        new_string = ""  # create a new string
+        points = str(self.data).split(".")  # split on (.)
+        new_string += f"{str(points[0])}."  # add the first string
 
         # if the length is greater
         # than 1(if value have decimal)
@@ -71,18 +71,18 @@ class Number():
         # is less than the fix_point add some
         # zeros(0) at the end
 
-        # return the string 
+        # return the string
         if len(points) > 1:
             after_decimal_point = str(points[-1])
             for index in range(fix_point):
                 if len(after_decimal_point) == (index + 1):
                     after_decimal_point += "0"
-                
+
                 new_string += after_decimal_point[index]
             return new_string
         else:
             return new_string
-    
+
     # check whether the number is
     # an integer
     # via splitting the decimal

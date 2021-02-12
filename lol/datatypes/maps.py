@@ -1,4 +1,3 @@
-
 class Maps:
     def __init__(self, map_types):
         self.types = self.get_map_data_type(map_types)
@@ -16,15 +15,16 @@ class Maps:
             return list(types[0:2])
         else:
             raise TypeError("Invalid type")
-    
-    # add an item to the 
+
+    # add an item to the
     # map
     def add(self, add_item_key, add_item_value):
         # check whether the types
         # match to the specified
         # types and add it to
         # the dict
-        if isinstance(add_item_key, self.types[0]) and isinstance(add_item_value, self.types[1]):
+        if isinstance(add_item_key, self.types[0]) and isinstance(
+                add_item_value, self.types[1]):
             if add_item_key not in self.__dict:
                 self.__dict[add_item_key] = add_item_value
         else:
@@ -51,7 +51,7 @@ class Maps:
         # key is present in the
         # map
 
-        # if true delete it and return 
+        # if true delete it and return
         # the map
         # else raise an Exception
         if delete_key in self.__dict:
@@ -65,7 +65,7 @@ class Maps:
     # value
     def filter(self, filter_value):
         # loop through each dict
-        # keys and if the value 
+        # keys and if the value
         # match append it to the array
         # and return it
         find_arr = []
@@ -96,26 +96,20 @@ class Maps:
             small_dict = {}
             for index, element in enumerate(convert):
                 small_dict[index] = str(element)
-            return Maps.get_map_object(
-                int,
-                str,
-                small_dict
-            )
+            return Maps.get_map_object(int, str, small_dict)
         elif isinstance(convert, dict):
             # if the length of the convert
             # dict is 0 return the map
             # object of type string
             if len(convert) == 0:
-                return Maps.get_map_object(
-                    str,str,convert
-                )
+                return Maps.get_map_object(str, str, convert)
             else:
                 # get all the keys in the dict
                 all_keys = [key for key in convert]
 
                 # the type of the key
                 key = type(all_keys[0])
-                
+
                 # the type of the value
                 value = type(convert[all_keys[0]])
 
@@ -145,11 +139,8 @@ class Maps:
                     small_dict[el] = all_values[index]
 
                 # return a new map object
-                return Maps.get_map_object(
-                    type(all_keys[0]),
-                    type(all_values[0]),
-                    small_dict
-                )
+                return Maps.get_map_object(type(all_keys[0]),
+                                           type(all_values[0]), small_dict)
         else:
             # if the type is not a list or a
             # dict throw an error
@@ -157,18 +148,11 @@ class Maps:
 
     # get a new map object
     def get_map_object(key, value, value_dict):
-        map_object = Maps(
-            (key, value)
-        )
-        
+        map_object = Maps((key, value))
+
         # add all dict items to the
         # map objecta nd return it
         for key_value in value_dict:
-            map_object.add(
-                key_value, value_dict[key_value]
-            )
+            map_object.add(key_value, value_dict[key_value])
 
         return map_object
-
-        
-        

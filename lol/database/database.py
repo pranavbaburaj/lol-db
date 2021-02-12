@@ -1,6 +1,6 @@
 import os
 import json
-# the main database 
+# the main database
 
 # uuid is used
 # to create unique
@@ -19,6 +19,7 @@ import logging as logger
 # by  a json file
 # in the name of the table
 
+
 class Database():
     def __init__(self, table_name, fields):
         self.table = self.__get_table_name(table_name)
@@ -35,10 +36,8 @@ class Database():
         # is going to be stored
         self.__data_dict = self.__get_file_dict()
 
-
         # print(self.__data_dict)
 
-    
         self.__commit_additions()
 
         self.modifications = True
@@ -86,19 +85,18 @@ class Database():
         if not os.path.exists(filename):
             with open(filename, "w") as create_file_object:
                 json.dump({}, create_file_object)
-        
-        
+
         return filename
-    
+
     # commit the changes to the
-    # file 
+    # file
     # write the updated dictionary
     # to the file
     def __commit_additions(self):
         with open(self.filename, "w") as json_data_writer:
             json.dump(self.__data_dict, json_data_writer, indent=6)
 
-    # add a new data to the 
+    # add a new data to the
     # the self.dictionary and
     # commit the changes
     # (write it to the file)
@@ -107,9 +105,9 @@ class Database():
         # is a list object
         if isinstance(data_to_save, list):
             # check if the length of the field
-            # match with the length of the 
+            # match with the length of the
             # parameter passed in
-            # else, throw an Exception 
+            # else, throw an Exception
             check_data = self.__check_field_length(data_to_save)
             if check_data:
                 new_dict = {}
@@ -121,7 +119,7 @@ class Database():
                     new_dict[self.fields[index]] = data_to_save[index]
                 self.__data_dict[str(uuid.uuid4())] = new_dict
 
-                # increment the index 
+                # increment the index
                 # by 1
                 self.idx += 1
 
@@ -196,7 +194,7 @@ class Database():
             self.__create_message("Changed data in the database")
 
     # filter out objects
-    # from the database dict based 
+    # from the database dict based
     # on the parameters
     # passed in
     def filter(self, matches):
@@ -215,7 +213,7 @@ class Database():
                     # append to the fields if it
                     # equal to the entered data
                     fields.append(self.__get_key_match(el, matches[el]))
-                
+
                 # return all duplicate items
                 # from the fields
                 return self.__remove_dup(fields)
@@ -237,7 +235,7 @@ class Database():
 
     # check if an element is present
     # in given array
-    def __has_in_all(self, el ,fi):
+    def __has_in_all(self, el, fi):
         # for element in
         # fields
         # if el not present in one field
@@ -248,7 +246,6 @@ class Database():
             else:
                 return False
         return True
-            
 
     # check whether it is same
     # as in the dictionary
@@ -258,8 +255,6 @@ class Database():
             if self.__data_dict[el][key] == value:
                 data.append(el)
         return data
-        
-        
 
     # get the object with a specific id
     def get(self, key):
@@ -280,11 +275,10 @@ class Database():
             if el not in self.fields:
                 raise KeyError(f"Cannot find key {el}")
         return True
-    
+
     # this is a secret function
     def get_dict_all_data_values_as_dict(self):
         return self.__data_dict
-
 
     # check whether the parameter
     # length is equal to the
@@ -294,4 +288,5 @@ class Database():
         if len(data) == len(self.fields):
             return True
         else:
-            raise Exception(f"Expected length {len(self.fields)} but got {len(data)}")
+            raise Exception(
+                f"Expected length {len(self.fields)} but got {len(data)}")
