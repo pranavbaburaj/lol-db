@@ -1,3 +1,5 @@
+# Database
+
 In this tutorial, we will check out a database library in python, called [lol-db](https://github.com/pranavbaburaj/lol). Before starting this tutorial, I assume that you have a basic knowledge of python and pip. In this tutorial, we will be covering:
 
  - Setting up the project
