@@ -70,3 +70,6 @@ from lol.datatypes.string import String
 
 string = String(7777)
 ```
+
+### CLI
+> ClI is under construction
