@@ -1,6 +1,6 @@
 from lol.prompt import Prompt
 
-p = Prompt("Name", password=True, typeof=str)
+p = Prompt("Name", verify="email", typeof=str)
 
 # from lol.switch import switch
 

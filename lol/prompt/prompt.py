@@ -1,15 +1,15 @@
 from clint.textui import colored as Color
 import getpass as PasswordPrompt
+import re as EmailValidator
 
 
 # the main prompt
 class Prompt():
-    def __init__(self, prompt_query="Enter something", email=False, password=False, typeof=str):
+    def __init__(self, prompt_query="Enter something", verify=None, typeof=str):
         # the prompt message used to query
         self.prompt_message = prompt_query
 
-        self.email = email
-        self.password = password
+        self.verify = verify
         self.typeof = typeof
 
         self.prompt()
@@ -17,7 +17,7 @@ class Prompt():
     # create the prompt message 
     def prompt(self):
         print(Color.cyan(f"{self.prompt_message} [?] "), end='')
-        if self.password == True:
+        if self.verify == "password":
             user_input = PasswordPrompt.getpass(prompt="")
         else:
             user_input = self.typeof(input(""))
@@ -25,4 +25,16 @@ class Prompt():
         return self.verify_answer(user_input)
 
     # verify the input by user
-        
+    def verify_answer(self, input_data):
+        # verifying the user_input
+        if self.verify == "password":
+            if len(input_data) < 8:
+                print(Color.red("Passwords must be atleast 8 characters"))
+            return input_data
+        elif self.verify == "email":
+            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+            if not EmailValidator.search(regex, input_data):
+                print(Color.red("Invalid email"))
+
+            return input_data
+
