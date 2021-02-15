@@ -13,7 +13,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="loldb",  # Replace with your own username
-    version="0.0.5",
+    version="0.0.7",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
     description="A simple json database and other utilities",
