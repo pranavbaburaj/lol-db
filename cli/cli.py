@@ -1,9 +1,16 @@
 import click as click
 from lol.database.database import Database
 from lol.datatypes.array import Array
-# from lol.prompt.prompt import switch
+from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
+
+def remove_spaces(data):
+    r_s = ""
+    for l in data:
+        if l is not " ":
+            r_s += str(l)
+    return r_s
 
 class ArgumentParser():
     def __init__(self, command, param):
@@ -39,9 +46,10 @@ class ArgumentParser():
 
     # create a new database object
     def create(self, database_name):
-        # data = Prompt("Enter the fields separated by spaces")
-        # print(data.get())
-        pass
+        data = Prompt("Enter the fields separated by spaces")
+        # fields = Array.create(remove_spaces(str(data.get()).split(" ")))
+        # print(remove_spaces(data.get()))
+        
         
 
     # check and execute all the commands

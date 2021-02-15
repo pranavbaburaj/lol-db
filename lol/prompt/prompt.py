@@ -12,7 +12,7 @@ class Prompt():
         self.verify = verify
         self.typeof = typeof
 
-        self.data = self.prompt()
+        # self.data = self.prompt()
 
     # create the prompt message 
     def prompt(self):
@@ -40,7 +40,8 @@ class Prompt():
                 return input_data
         else:
             return input_data
+        return input_data
 
-    def get(self):
-        return self.data
+    # def get(self):
+    #     return self.data
 
