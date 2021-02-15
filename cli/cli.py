@@ -16,13 +16,39 @@ class ArgumentParser():
         self.databases = self.__get_all_databases(os.getcwd())
         self.activated_databases = Array(Database)
 
-        print(self.activated_databases)
+        self.__execute_commands()
+
+        print(self.databases)
 
     # get all databases in the current library
     def __get_all_databases(self, directory):
-        return []
-        
+        # all files that end with a .lol extension
+        LOL_FILES = []
 
+        # loop through all files and check
+        # for files that has a extension
+        # (.lol)
+        for index, folder_name in enumerate(os.listdir(directory)):
+            # if the the file is actualy a file or a folder
+            is_file = os.path.isfile(os.path.join(directory, folder_name))
+            if folder_name.endswith(".lol") and is_file:
+                LOL_FILES.append(folder_name)
+
+        return LOL_FILES
+
+    # create a new database object
+    def create(self, database_name):
+        enter_fields = 0
+
+    # create a prompt message
+
+    # check and execute all the commands
+    def __execute_commands(self):
+        command = self.command
+        if command == "create":
+            self.create(self.parameter)
+        
+        
 
 @click.command()
 @click.argument('command', type=str)
