@@ -1,18 +1,22 @@
-from lol.switch import switch
+from lol.prompt import Prompt
 
-def data():
-    print("lol")
+p = Prompt("Name", password=True, typeof=str)
 
-d = switch(
-    5, {
-        8 : data,
-        6 : data,
-        58 : data,
-        None : data
-    }
-)
+# from lol.switch import switch
 
-d()
+# def data():
+#     print("lol")
+
+# d = switch(
+#     5, {
+#         8 : data,
+#         6 : data,
+#         58 : data,
+#         None : data
+#     }
+# )
+
+# d()
 
 # from lol.datatypes.maps import Maps
 

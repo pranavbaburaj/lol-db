@@ -21,7 +21,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pranavbaburaj/lol",
     packages=setuptools.find_packages(),
-    install_requires=['dicttoxml', "clint", "click"],
+    install_requires=['dicttoxml', "clint", "click", "getpass"],
     entry_points={"console_scripts": ['lol = cli.cli:main']},
     classifiers=[
         "Programming Language :: Python :: 3",
