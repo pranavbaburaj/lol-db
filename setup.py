@@ -13,7 +13,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="loldb",  # Replace with your own username
-    version="0.0.7",
+    version="0.0.9",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
     description="A simple json database and other utilities",
@@ -21,7 +21,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pranavbaburaj/lol",
     packages=setuptools.find_packages(),
-    install_requires=['dicttoxml', "clint", "click", "getpass"],
+    install_requires=['dicttoxml', "clint", "click"],
     entry_points={"console_scripts": ['lol = cli.cli:main']},
     classifiers=[
         "Programming Language :: Python :: 3",

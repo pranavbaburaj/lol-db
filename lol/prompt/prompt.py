@@ -27,15 +27,18 @@ class Prompt():
     # verify the input by user
     def verify_answer(self, input_data):
         # verifying the user_input
-        if self.verify == "password":
-            if len(input_data) < 8:
-                print(Color.red("Passwords must be atleast 8 characters"))
-            return input_data
-        elif self.verify == "email":
-            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-            if not EmailValidator.search(regex, input_data):
-                print(Color.red("Invalid email"))
+        if isinstance(input_data, str):
+            if self.verify == "password":
+                if len(input_data) < 8:
+                    print(Color.red("Passwords must be atleast 8 characters"))
+                return input_data
+            elif self.verify == "email":
+                regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+                if not EmailValidator.search(regex, input_data):
+                    print(Color.red("Invalid email"))
 
+                return input_data
+        else:
             return input_data
 
     def get(self):
