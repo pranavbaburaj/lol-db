@@ -12,7 +12,7 @@ class Prompt():
         self.verify = verify
         self.typeof = typeof
 
-        self.prompt()
+        self.data = self.prompt()
 
     # create the prompt message 
     def prompt(self):
@@ -37,4 +37,7 @@ class Prompt():
                 print(Color.red("Invalid email"))
 
             return input_data
+
+    def get(self):
+        return self.data
 

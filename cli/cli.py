@@ -1,6 +1,7 @@
 import click as click
 from lol.database.database import Database
 from lol.datatypes.array import Array
+# from lol.prompt.prompt import switch
 from clint.textui import colored as Color
 import os as os
 
@@ -38,9 +39,10 @@ class ArgumentParser():
 
     # create a new database object
     def create(self, database_name):
-        enter_fields = 0
-
-    # create a prompt message
+        # data = Prompt("Enter the fields separated by spaces")
+        # print(data.get())
+        pass
+        
 
     # check and execute all the commands
     def __execute_commands(self):
