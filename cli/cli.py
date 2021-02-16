@@ -4,9 +4,12 @@ from lol.datatypes.array import Array
 from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
+import json as JsonConverter
 
 # the env identifier
 identifier = "LOLDATABASES"
+
+
 
 def remove_spaces(data):
     return_array = []
@@ -56,16 +59,13 @@ class ArgumentParser():
         # remove all the duplicate fields
         fields = Array.create(remove_spaces(data.split(" "))).get()
 
-        if os.getenv(identifier) is None:
-            os.environ[identifier] = os.getcwd()
         
         database = Database(database_name, fields)
         self.current_databases.add(database)
 
-        os.environ[identifier] += "lol||"
+
     # check and execute all the commands
     def __execute_commands(self):
-        print(os.getenv(identifier))
         command = self.command
         if command == "create":
             self.create(self.parameter)
