@@ -5,12 +5,15 @@ from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
 
+# the env identifier
+identifier = "LOLDATABASES"
+
 def remove_spaces(data):
-    r_s = ""
-    for l in data:
-        if l is not " ":
-            r_s += str(l)
-    return r_s
+    return_array = []
+    for index, el in enumerate(data):
+        if el is not " ":
+            return_array.append(el)
+    return return_array
 
 class ArgumentParser():
     def __init__(self, command, param):
@@ -22,6 +25,7 @@ class ArgumentParser():
 
         # conditions
         self.databases = self.__get_all_databases(os.getcwd())
+        self.current_databases = Array(Database)
         self.activated_databases = Array(Database)
 
         self.__execute_commands()
@@ -46,15 +50,22 @@ class ArgumentParser():
 
     # create a new database object
     def create(self, database_name):
+        # prompt for the fields
         data = Prompt("Enter the fields separated by spaces").prompt()
-        # fields = Array.create(remove_spaces(str(data.get()).split(" ")))
-        print(data.split(" "))
 
-        
-        
+        # remove all the duplicate fields
+        fields = Array.create(remove_spaces(data.split(" "))).get()
 
+        if os.getenv(identifier) is None:
+            os.environ[identifier] = os.getcwd()
+        
+        database = Database(database_name, fields)
+        self.current_databases.add(database)
+
+        os.environ[identifier] += "lol||"
     # check and execute all the commands
     def __execute_commands(self):
+        print(os.getenv(identifier))
         command = self.command
         if command == "create":
             self.create(self.parameter)
