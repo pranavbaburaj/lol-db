@@ -5,7 +5,10 @@ import re as EmailValidator
 
 # the main prompt
 class Prompt():
-    def __init__(self, prompt_query="Enter something", verify=None, typeof=str):
+    def __init__(self,
+                 prompt_query="Enter something",
+                 verify=None,
+                 typeof=str):
         # the prompt message used to query
         self.prompt_message = prompt_query
 
@@ -14,7 +17,7 @@ class Prompt():
 
         # self.data = self.prompt()
 
-    # create the prompt message 
+    # create the prompt message
     def prompt(self):
         print(Color.cyan(f"{self.prompt_message} [?] "), end='')
         if self.verify == "password":
@@ -44,4 +47,3 @@ class Prompt():
 
     # def get(self):
     #     return self.data
-
