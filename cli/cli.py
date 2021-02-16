@@ -4,7 +4,7 @@ from lol.datatypes.array import Array
 from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
-import json as JsonConverter
+
 
 # the env identifier
 identifier = "LOLDATABASES"
@@ -33,7 +33,6 @@ class ArgumentParser():
 
         self.__execute_commands()
 
-        print(self.databases)
 
     # get all databases in the current library
     def __get_all_databases(self, directory):
@@ -43,11 +42,14 @@ class ArgumentParser():
         # loop through all files and check
         # for files that has a extension
         # (.lol)
-        for index, folder_name in enumerate(os.listdir(directory)):
-            # if the the file is actualy a file or a folder
-            is_file = os.path.isfile(os.path.join(directory, folder_name))
-            if folder_name.endswith(".lol") and is_file:
-                LOL_FILES.append(folder_name)
+        if os.path.exists(directory) and os.path.isdir(directory):
+            for index, folder_name in enumerate(os.listdir(directory)):
+                # if the the file is actualy a file or a folder
+                is_file = os.path.isfile(os.path.join(directory, folder_name))
+                if folder_name.endswith(".lol") and is_file:
+                    LOL_FILES.append(os.path.join(
+                        directory,folder_name
+                    ))
 
         return LOL_FILES
 
@@ -67,6 +69,17 @@ class ArgumentParser():
         command = self.command
         if command == "create":
             self.create(self.parameter)
+        elif command == "list":
+            if self.parameter == ".":
+                data = self.__get_all_databases(os.getcwd())
+            else:
+                data = self.__get_all_databases(self.parameter)
+            
+            for index, file in enumerate(data):
+                string = f"[{index + 1}] {file} "
+                if os.path.isfile(file):
+                    print(Color.green(f"{string}(LOLFILE)"))
+                
 
 
 @click.command()
