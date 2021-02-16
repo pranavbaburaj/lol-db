@@ -46,9 +46,10 @@ class ArgumentParser():
 
     # create a new database object
     def create(self, database_name):
-        data = Prompt("Enter the fields separated by spaces")
+        data = Prompt("Enter the fields separated by spaces").prompt()
         # fields = Array.create(remove_spaces(str(data.get()).split(" ")))
-        # print(remove_spaces(data.get()))
+        print(data.split(" "))
+
         
         
 
