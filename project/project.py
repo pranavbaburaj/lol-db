@@ -4,6 +4,7 @@ import os as os
 
 # get the mit license
 
+
 def mit_license():
     return """
     MIT License
@@ -29,6 +30,7 @@ def mit_license():
     SOFTWARE.
     """
 
+
 # the project class
 class Project:
     def __init__(self):
@@ -47,23 +49,19 @@ class Project:
         # if the directory exists throw out an
         # error
         if dir_exists:
-            # but if the location is the current 
+            # but if the location is the current
             # directory it is always created
             # so we check if it is empty
             # if not throw out an error
             if data['location'] is not os.getcwd():
                 if len(os.listdir(data['location'])) > 0:
-                    print(Color.red(
-                        "[ERROR] : Folder is not empty"
-                    ))
+                    print(Color.red("[ERROR] : Folder is not empty"))
             else:
-                print(Color.red(
-                    "[ERROR] : File or folder already exists"
-                ))
+                print(Color.red("[ERROR] : File or folder already exists"))
         else:
             # create the location directory
             os.mkdir(data['location'])
-            
+
             # create the license file
             self.create_license_file(data['location'], data['license'])
 
@@ -76,12 +74,9 @@ class Project:
             license_data = mit_license()
         else:
             license_data = "LICENSE"
-        filename = os.path.join(
-            location, "LICENSE"
-        )
+        filename = os.path.join(location, "LICENSE")
         with open(filename, "w") as license_writer:
             license_writer.write(license_data)
-
 
     # create all the required prompts
     def create_prompts(self):
@@ -96,14 +91,14 @@ class Project:
         ]
 
         # for each query in prompt_queries
-        # prompt the query and add it to the 
+        # prompt the query and add it to the
         # prompt_solution
         # prompt_solution[query] = retort
         for index, el in enumerate(prompt_queries):
             prompt = Prompt(el, typeof=str)
             prompt_solutions[str(el).replace(
                 " ", "-").lower()] = prompt.prompt().replace(" ", "_")
-        
+
         # check if the project name is a dot(.)
         # if yes, change it the directory basename
         # and add a new key called location(os.getcwd()) to
