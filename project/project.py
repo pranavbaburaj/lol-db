@@ -32,15 +32,25 @@ def mit_license():
 # the project class
 class Project:
     def __init__(self):
+        # create all the prompt message
         self.prompt_message = self.create_prompts()
+
+        # create all the required directories
 
         self.create_directories(self.prompt_message)
 
     # create all the directories
     def create_directories(self, data):
+        # check if the filename already exists
         dir_exists = os.path.exists(data['location'])
 
+        # if the directory exists throw out an
+        # error
         if dir_exists:
+            # but if the location is the current 
+            # directory it is always created
+            # so we check if it is empty
+            # if not throw out an error
             if data['location'] is not os.getcwd():
                 if len(os.listdir(data['location'])) > 0:
                     print(Color.red(
@@ -51,12 +61,17 @@ class Project:
                     "[ERROR] : File or folder already exists"
                 ))
         else:
+            # create the location directory
             os.mkdir(data['location'])
             
+            # create the license file
             self.create_license_file(data['location'], data['license'])
 
     # create the license file
     def create_license_file(self, location, license_file):
+        # check if the license is mit
+        # if yes, write the mit license to the file
+        # else create an empty file
         if license_file == "mit":
             license_data = mit_license()
         else:
@@ -70,17 +85,30 @@ class Project:
 
     # create all the required prompts
     def create_prompts(self):
+        # the answers given by the user
         prompt_solutions = {}
+
+        # all the questions to ask to
+        # the user
         prompt_queries = [
             "Project Name",
             "License",
         ]
 
+        # for each query in prompt_queries
+        # prompt the query and add it to the 
+        # prompt_solution
+        # prompt_solution[query] = retort
         for index, el in enumerate(prompt_queries):
             prompt = Prompt(el, typeof=str)
             prompt_solutions[str(el).replace(
                 " ", "-").lower()] = prompt.prompt().replace(" ", "_")
-
+        
+        # check if the project name is a dot(.)
+        # if yes, change it the directory basename
+        # and add a new key called location(os.getcwd()) to
+        # the prompt_solutions
+        # else, create a new key called location
         if prompt_solutions['project-name'] == ".":
             prompt_solutions['project-name'] = os.path.basename(os.getcwd())
             prompt_solutions['location'] = os.getcwd()
@@ -88,12 +116,15 @@ class Project:
             prompt_solutions['location'] = os.path.join(
                 os.getcwd(), prompt_solutions['project-name'])
 
+        # convert the variable into
+        # lowercase text
         prompt_solutions['license'] = prompt_solutions['license'].lower()
 
         return prompt_solutions
 
 
 def main():
+    # create a new project
     project = Project()
 
 
