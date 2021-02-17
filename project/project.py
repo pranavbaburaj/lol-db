@@ -2,13 +2,71 @@ from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
 
+# get the mit license
+
+def mit_license():
+    return """
+    MIT License
+
+    Copyright (c) 2021 Pranav Baburaj
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    """
 
 # the project class
 class Project:
     def __init__(self):
         self.prompt_message = self.create_prompts()
 
-        print(self.prompt_message)
+        self.create_directories(self.prompt_message)
+
+    # create all the directories
+    def create_directories(self, data):
+        dir_exists = os.path.exists(data['location'])
+
+        if dir_exists:
+            if data['location'] is not os.getcwd():
+                if len(os.listdir(data['location'])) > 0:
+                    print(Color.red(
+                        "[ERROR] : Folder is not empty"
+                    ))
+            else:
+                print(Color.red(
+                    "[ERROR] : File or folder already exists"
+                ))
+        else:
+            os.mkdir(data['location'])
+            
+            self.create_license_file(data['location'], data['license'])
+
+    # create the license file
+    def create_license_file(self, location, license_file):
+        if license_file == "mit":
+            license_data = mit_license()
+        else:
+            license_data = "LICENSE"
+        filename = os.path.join(
+            location, "LICENSE"
+        )
+        with open(filename, "w") as license_writer:
+            license_writer.write(license_data)
+
 
     # create all the required prompts
     def create_prompts(self):
@@ -29,6 +87,8 @@ class Project:
         else:
             prompt_solutions['location'] = os.path.join(
                 os.getcwd(), prompt_solutions['project-name'])
+
+        prompt_solutions['license'] = prompt_solutions['license'].lower()
 
         return prompt_solutions
 
