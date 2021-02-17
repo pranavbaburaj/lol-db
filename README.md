@@ -72,4 +72,4 @@ string = String(7777)
 ```
 
 ### CLI
-> ClI is under construction
+LOLdb also have an integrated `cli`

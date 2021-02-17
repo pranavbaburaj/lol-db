@@ -9,7 +9,16 @@ import os as os
 identifier = "LOLDATABASES"
 
 
+# remove spaces from
+# an array an return an array
+# without spaces
 def remove_spaces(data):
+    """
+    Create a return array and enumerate
+    through the array and append it to
+    the return array if the element is
+    not a space( )
+    """
     return_array = []
     for index, el in enumerate(data):
         if el is not " ":
@@ -62,10 +71,21 @@ class ArgumentParser():
 
     # check and execute all the commands
     def __execute_commands(self):
+        # make a duplicate of the self.command
         command = self.command
         if command == "create":
+            """
+            if command is craete,
+            create the database
+            """
             self.create(self.parameter)
         elif command == "list":
+            """
+            if the command is list and if
+            the parameter is a . take the lolfiles
+            in the current folder, else, 
+            do the same with the given parameter
+            """
             if self.parameter == ".":
                 data = self.__get_all_databases(os.getcwd())
             else:
@@ -76,6 +96,11 @@ class ArgumentParser():
                 if os.path.isfile(file):
                     print(Color.green(f"{string}(LOLFILE)"))
         elif command == "remove" or command == "delete":
+            """
+            Removing a file if it exists
+            in the current directory, 
+            else throw out an error
+            """
             filename = f"{self.parameter}.lol"
             if filename in os.listdir(os.getcwd()):
                 os.remove(os.path.join(os.getcwd(), filename))

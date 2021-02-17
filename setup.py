@@ -9,6 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 
+DEPENDENCIES = ['dicttoxml', "clint", "click"]
 
 
 setuptools.setup(
@@ -21,7 +22,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pranavbaburaj/lol",
     packages=setuptools.find_packages(),
-    install_requires=['dicttoxml', "clint", "click"],
+    install_requires=DEPENDENCIES,
     entry_points={"console_scripts": ['lol = cli.cli:main']},
     classifiers=[
         "Programming Language :: Python :: 3",
