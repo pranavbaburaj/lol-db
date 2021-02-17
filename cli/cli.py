@@ -75,7 +75,16 @@ class ArgumentParser():
                 string = f"[{index + 1}] {file} "
                 if os.path.isfile(file):
                     print(Color.green(f"{string}(LOLFILE)"))
-
+        elif command == "remove" or command == "delete":
+            filename = f"{self.parameter}.lol"
+            if filename in os.listdir(os.getcwd()):
+                os.remove(os.path.join(
+                    os.getcwd(), filename
+                ))
+            else:
+                print(Color.red(
+                    f"Cannot find {os.path.join(os.getcwd(), filename)}"
+                ))
 
 @click.command()
 @click.argument('command', type=str)
