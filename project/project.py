@@ -1,6 +1,34 @@
 from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
+import platform as UserPlatform
+from string import Template
+
+
+def get_setup_script(name, description):
+    return """
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="package_name", 
+    version="0.0.1",
+    author="username",
+    description="deeddes",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
+)
+"""
 
 
 # throw a succes message
@@ -69,6 +97,29 @@ class Project:
             # create the license file
             self.create_license_file(data['location'], data['license'])
 
+            # create setup.py script
+            self.create_python_setup_script(data)
+    
+    def create_python_setup_script(self, data):
+        # get the setup script filename
+        filename = os.path.join(data['location'], "setup.py")
+
+        # get the setup script
+        template = str(get_setup_script(
+                data['project-name'],
+                data['description']
+            )).replace("package_name", data['project-name']).replace(
+                "username", UserPlatform.uname().node
+            ).replace(
+                'deeddes', data['description'].replace("_", " ")
+            )
+
+        # write the string to the setup file
+        with open(filename, "w") as setup_script_writer:
+            setup_script_writer.write(template)
+
+        throw_process_success_message("Created the setup script")
+
     # create the license file
     def create_license_file(self, location, license_file):
         # check if the license is mit
@@ -95,6 +146,7 @@ class Project:
         # the user
         prompt_queries = [
             "Project Name",
+            "Description",
             "License",
         ]
 
