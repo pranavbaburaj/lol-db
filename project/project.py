@@ -2,8 +2,12 @@ from lol.prompt import Prompt
 from clint.textui import colored as Color
 import os as os
 
-# get the mit license
 
+# throw a succes message
+def throw_process_success_message(message):
+    print(Color.green(f"[SUCCESS]:{message}"))
+
+# get the mit license
 
 def mit_license():
     return """
@@ -77,6 +81,10 @@ class Project:
         filename = os.path.join(location, "LICENSE")
         with open(filename, "w") as license_writer:
             license_writer.write(license_data)
+
+        # throw a success message
+        throw_process_success_message("Created the LICENSE")
+
 
     # create all the required prompts
     def create_prompts(self):
