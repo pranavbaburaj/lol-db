@@ -14,7 +14,7 @@ DEPENDENCIES = ['dicttoxml', "clint", "click"]
 
 setuptools.setup(
     name="loldb",  # Replace with your own username
-    version="0.1.2",
+    version="0.1.3",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
     description="A simple json database and other utilities",
