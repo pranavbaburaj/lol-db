@@ -35,7 +35,9 @@ setuptools.setup(
 def throw_process_success_message(message):
     print(Color.green(f"[SUCCESS]:{message}"))
 
+
 # get the mit license
+
 
 def mit_license():
     return """
@@ -99,20 +101,20 @@ class Project:
 
             # create setup.py script
             self.create_python_setup_script(data)
-    
+
     def create_python_setup_script(self, data):
         # get the setup script filename
         filename = os.path.join(data['location'], "setup.py")
 
         # get the setup script
-        template = str(get_setup_script(
-                data['project-name'],
-                data['description']
-            )).replace("package_name", data['project-name']).replace(
-                "username", UserPlatform.uname().node
-            ).replace(
-                'deeddes', data['description'].replace("_", " ")
-            )
+        template = str(
+            get_setup_script(data['project-name'],
+                             data['description'])).replace(
+                                 "package_name", data['project-name']).replace(
+                                     "username",
+                                     UserPlatform.uname().node).replace(
+                                         'deeddes',
+                                         data['description'].replace("_", " "))
 
         # write the string to the setup file
         with open(filename, "w") as setup_script_writer:
@@ -135,7 +137,6 @@ class Project:
 
         # throw a success message
         throw_process_success_message("Created the LICENSE")
-
 
     # create all the required prompts
     def create_prompts(self):
