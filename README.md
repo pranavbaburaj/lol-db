@@ -74,4 +74,8 @@ string = String(7777)
 ```
 
 ### CLI
-LOLdb also have an integrated `cli`
+
+#### Project Generator
+```
+lol-create-project
+```
