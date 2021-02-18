@@ -125,6 +125,9 @@ class Project:
             os.path.join(package_directory, f"{data['project-name']}.py")
         ]
 
+        # loop through each file in the
+        # files array and create the file
+        # and also , throw a success message
         for index, filename in enumerate(files):
             self.create_file(
                 filename,
