@@ -107,6 +107,23 @@ class Project:
             # creating the package
             self.create_package_directory(data)
 
+            self.create_test_directory(data['location'])
+
+    # create the test directory
+    def create_test_directory(self, location):
+        # create the required path
+        if os.path.basename(location) == "test":
+            path = os.path.join(
+                location, "testing"
+            )
+        else:
+            path = os.path.join(
+                location, "test"
+            )
+
+        # create the directory
+        os.mkdir(path)
+
 
     # create the index package directory
     # with the init.py file
