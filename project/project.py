@@ -102,6 +102,44 @@ class Project:
             # create setup.py script
             self.create_python_setup_script(data)
 
+            self.create_file(os.path.join(data['location'], 'README.md'), f"# {data['project-name']}")
+        
+            # creating the package
+            self.create_package_directory(data)
+
+
+    # create the index package directory
+    # with the init.py file
+    def create_package_directory(self, data):
+        # the package directory
+        package_directory = os.path.join(
+            data['location'], data['project-name']
+        )
+
+        # create the directory
+        os.mkdir(package_directory)
+
+        # files to create
+        files = [
+            os.path.join(package_directory, "__init__.py"),
+            os.path.join(package_directory, f"{data['project-name']}.py")
+        ]
+
+        for index, filename in enumerate(files):
+            self.create_file(
+                filename,
+                f"# {filename}"
+            )
+
+            throw_process_success_message(
+                f"[{index + 1}] Created {filename}"
+            )
+
+
+    def create_file(self, filename, file_write_text):
+        with open(filename, "w") as writer:
+            writer.write(file_write_text)
+
     def create_python_setup_script(self, data):
         # get the setup script filename
         filename = os.path.join(data['location'], "setup.py")
