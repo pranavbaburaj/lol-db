@@ -15,6 +15,8 @@ Lol is a database library
     - Update
     - Filter
 - Prompt
+    - Input prompt
+    - Options(coming soon)
 - Project generator
 
 ## How to use it
