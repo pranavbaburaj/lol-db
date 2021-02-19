@@ -1,3 +1,8 @@
+from lol.prompt import Prompt
+
+p = Prompt("Name", verify="email", typeof=str)
+
+
 # from lol.prompt import Prompt
 
 # p = Prompt("Name", verify="email", typeof=str)

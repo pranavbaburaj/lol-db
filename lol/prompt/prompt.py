@@ -17,9 +17,12 @@ class Prompt():
 
         # self.data = self.prompt()
 
+    def __print_message(self):
+        print(Color.cyan(f"{self.prompt_message} [?] "), end='')
+
     # create the prompt message
     def prompt(self):
-        print(Color.cyan(f"{self.prompt_message} [?] "), end='')
+        self.__print_message()
         if self.verify == "password":
             user_input = PasswordPrompt.getpass(prompt="")
         else:
@@ -44,6 +47,38 @@ class Prompt():
         else:
             return input_data
         return input_data
+
+    # create an option
+    def option(self, options):
+        if isinstance(options, list):
+            self.__print_message()
+            print("\n")
+            for element_index in range(len(options)):
+                current_element = options[element_index]
+                if not isinstance(options[element_index], dict):
+                    raise TypeError("Element expected to be a dict")
+                else:
+                    start_at_text = "[~]"
+                    if "selector" in current_element:
+                        start_at_text = f"[{current_element['selector']}]"
+                    
+                    print(Color.cyan(
+                        f"{start_at_text} {current_element['prompt']}"
+                    ))
+                    
+            print(Color.cyan("\n -> "), end='')
+            user_input = input()
+
+            for dict_element in options:
+                match = str(user_input).lower() == str(dict_element['prompt'].lower()) 
+                if match:
+                    if "return" in dict_element:
+                        return dict_element["return"]
+                    else:
+                        return dict_element["selector"]
+            print("No")  
+        else:
+            raise TypeError("Options should be lists")
 
     # def get(self):
     #     return self.data
