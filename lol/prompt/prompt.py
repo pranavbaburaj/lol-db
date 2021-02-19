@@ -80,5 +80,9 @@ class Prompt():
         else:
             raise TypeError("Options should be lists")
 
+    # throw an error message
+    def error(self, error_message):
+        print(Color.red(f"ERROR:{error_message}"))
+
     # def get(self):
     #     return self.data

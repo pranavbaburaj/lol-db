@@ -1,14 +1,16 @@
 from lol.prompt import Prompt
 
-p = Prompt("Name", verify="email", typeof=str)
 
-d = p.option([
-    {"prompt" : "Hai", "selector" : 1},
-    {"prompt" : "Hello", "selector" : 2},
-    {"prompt" : "Hoo", "selector" : 3}
-])
+p.error("hello")
+# p = Prompt("Name", verify="email", typeof=str)
 
-print(d)
+# d = p.option([
+#     {"prompt" : "Hai", "selector" : 1},
+#     {"prompt" : "Hello", "selector" : 2},
+#     {"prompt" : "Hoo", "selector" : 3}
+# ])
+
+# print(d)
 # from lol.prompt import Prompt
 
 # p = Prompt("Name", verify="email", typeof=str)
