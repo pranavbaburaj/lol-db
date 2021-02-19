@@ -14,6 +14,10 @@ Lol is a database library
     - Delete
     - Update
     - Filter
+- Prompt
+    - Input prompt
+    - Options(coming soon)
+- Project generator
 
 ## How to use it
 ### Database
@@ -72,4 +76,8 @@ string = String(7777)
 ```
 
 ### CLI
-LOLdb also have an integrated `cli`
+
+#### Project Generator
+```
+lol-create-project
+```
