@@ -49,7 +49,7 @@ class Prompt():
         return input_data
 
     # create an option
-    def option(self, options):
+    def option(self, options, repeat=True):
         if isinstance(options, list):
             self.__print_message()
             print("\n")
@@ -76,13 +76,20 @@ class Prompt():
                         return dict_element["return"]
                     else:
                         return dict_element["selector"]
-            print("No")  
+            
+            if repeat:
+                return self.option(
+                    options
+                )
+            else:
+                return None
         else:
             raise TypeError("Options should be lists")
 
     # throw an error message
-    def error(self, error_message):
-        print(Color.red(f"ERROR:{error_message}"))
+    @staticmethod
+    def error(error_message):
+        print(Color.red(f"[ERROR] {error_message}"))
 
     # def get(self):
     #     return self.data
