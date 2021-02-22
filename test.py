@@ -1,4 +1,18 @@
+from lol.argparse import Parser
+import sys
 
+def get(data):
+    print(data)
+
+p = Parser([
+    {
+        "value" : "install $package",
+        "types" : {
+            "package" : str
+        },
+        "func" : get
+    }
+])
 
 # from lol.prompt import Prompt
 
