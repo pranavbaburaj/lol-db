@@ -89,3 +89,6 @@ from lol.prompt import Prompt
 
 data = Prompt("Name", type=str).prompt()
 ```
+
+### ArgParser
+> Under development
