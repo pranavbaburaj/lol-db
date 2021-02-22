@@ -84,4 +84,8 @@ lol-create-project
 
 
 ### Prompts and options
+```python
+from lol.prompt import Prompt
 
+data = Prompt("Name", type=str).prompt()
+```
