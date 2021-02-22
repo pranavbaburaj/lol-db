@@ -8,6 +8,12 @@ def remove_spaces(remove_space_array):
 
     return element_array
 
+def has_duplicate_variables(variables):
+    for element in variables:
+        if variables.count(element) > 1:
+            return True
+    return False
+
 class Parser:
     def __init__(self, commands):
         self.parse_items = sys.argv[1:]
@@ -22,10 +28,15 @@ class Parser:
                 element["value"] = remove_spaces(
                     element["value"].split(" ")
                 )
+
                 variables = list(filter(
                     lambda val : val.startswith("$"),
                     element["value"]
                 ))
+
+                assert not has_duplicate_variables(
+                    variables
+                ), "The Parameter contains duplicate variables"
 
                 if not "types" in element:
                     element["types"] = {}
