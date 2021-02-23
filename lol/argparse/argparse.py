@@ -16,8 +16,9 @@ def has_duplicate_variables(variables):
 
 class Parser:
     def __init__(self, commands):
-        self.parse_items = sys.argv[1:]
+        self.arguments = sys.argv[1:]
         self.commands = self.__is_valid_commands(commands)
+
 
     def __is_valid_commands(self, commands):
         assert isinstance(commands, list), "Expected type list"
@@ -56,5 +57,44 @@ class Parser:
                                 "type" : str
                             }
                 assert "func" in element, "Cannot find key func"
+                assert callable(element["func"]), "func not a function"
+
             else:
                 raise TypeError("Expected a dict")
+        return commands
+
+    def parse(self):
+        for each_command in self.commands:
+            command_value = each_command["value"]
+            if len(self.arguments) == len(command_value):
+                all_cases_match = False
+                for index in range(len(self.arguments)):
+                    if isinstance(command_value[index], str):
+                        if command_value[index] == self.arguments[index]:
+                            all_cases_match = True
+                        else:
+                            all_cases_match = False
+                    else:
+                        pass
+                if all_cases_match:
+                    return each_command["func"](
+                        self.__get_variable_values(
+                            each_command,
+                            self.arguments
+                        )
+                    )
+                    
+            else:
+                pass
+
+    def __get_variable_values(self, command, arguments):
+        data = command["value"]
+        variables = {}
+        for index in range(len(data)):
+            element = data[index]
+            if isinstance(element, dict):
+                variables[element["value"]] = arguments[index]
+                
+        return dict(variables)
+
+        

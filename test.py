@@ -4,6 +4,9 @@ import sys
 def get(data):
     print(data)
 
+def delete(data):
+    print(data)
+
 p = Parser([
     {
         "value" : "install $package",
@@ -11,8 +14,17 @@ p = Parser([
             "package" : str
         },
         "func" : get
+    },
+    {
+        "value" : "delete $package",
+        "types" : {
+            "package" : str
+        },
+        "func" : delete
     }
 ])
+
+print(p.parse())
 
 # from lol.prompt import Prompt
 
