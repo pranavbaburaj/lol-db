@@ -85,3 +85,33 @@ lol-create-project
 
 ### Prompts and options
 
+```python
+from lol.argparse import Parser
+import sys
+
+def get(data):
+    print(data)
+
+def delete(data):
+    print(data)
+
+p = Parser([
+    {
+        "value" : "install $package",
+        "types" : {
+            "package" : str
+        },
+        "func" : get
+    },
+    {
+        "value" : "delete $package",
+        "types" : {
+            "package" : str
+        },
+        "func" : delete
+    }
+])
+
+p.parse()
+```
+
