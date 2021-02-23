@@ -84,7 +84,13 @@ lol-create-project
 
 
 ### Prompts and options
+```python
+from lol.prompt import Prompt
 
+data = Prompt("Name", type=str).prompt()
+```
+
+<<<<<<< HEAD
 ```python
 from lol.argparse import Parser
 import sys
@@ -115,3 +121,7 @@ p = Parser([
 p.parse()
 ```
 
+=======
+### ArgParser
+> Under development
+>>>>>>> 21da2c171f7b29ae400e1cdf9ff786edb9279b8b
