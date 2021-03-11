@@ -18,6 +18,7 @@ Lol is a database library
     - Input prompt
     - Options(coming soon)
 - Project generator
+- CLI
 
 ## How to use it
 ### Database
