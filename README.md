@@ -1,4 +1,6 @@
 # LOL
+> The documentation is still under construction
+
 Lol is a database library
 <hr>
 
